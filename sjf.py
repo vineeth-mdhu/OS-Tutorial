@@ -17,12 +17,17 @@ heap=[job(jobs[0][0],jobs[0][1],jobs[0][2])]  # pushing the first job to the hea
 heapq.heapify(heap)     
 i=0
 j=1
+
 print("id","at"," bt","  ct"," tat"," wt")
+
 while i<len(jobs):
   curr=heapq.heappop(heap)  #pop the job with minimum burst time
   time+=curr.bt             #increment time by current job's burst time
+  
   print(curr.id," ",curr.at," ",curr.bt," ",time," ",time-curr.at," ",time-curr.at-curr.bt)
+  
   while(j<len(jobs) and jobs[j][0]<time): #checking for jobs that have arrived to push into the heap
     heapq.heappush(heap,job(jobs[j][0],jobs[j][1],jobs[j][2]))
     j+=1
+    
   i+=1
